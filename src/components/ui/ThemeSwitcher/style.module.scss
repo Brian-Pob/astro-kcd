@@ -1,0 +1,25 @@
+.theme-switcher-btn {
+  color: inherit;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: hsl(var(--text-hsl) / 40%);
+  padding: 1.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--text);
+  }
+
+  span {
+    display: inline-flex;
+    i {
+      font-size: 2rem;
+    }
+  }
+}
