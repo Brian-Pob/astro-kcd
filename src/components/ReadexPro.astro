@@ -1,0 +1,24 @@
+---
+const fontStyles = [
+  'Bold',
+  'ExtraLight',
+  'Light',
+  'Medium',
+  'Regular',
+  'SemiBold',
+];
+---
+
+{
+  fontStyles.map((fontStyle) => {
+    return (
+      <link
+        rel='preload'
+        href={`/fonts/Readex_Pro/static/ReadexPro-${fontStyle}.ttf`}
+        as='font'
+        type='font/truetype'
+        crossorigin
+      />
+    );
+  })
+}

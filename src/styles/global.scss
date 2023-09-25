@@ -1,0 +1,16 @@
+@import './reset.scss';
+@import 'open-props/style';
+
+@font-face {
+  font-family: 'Readex-Pro';
+  src: url('/fonts/Readex_Pro/ReadexPro-VariableFont_HEXP_wght.ttf');
+}
+
+* {
+  font-family: 'Readex-Pro', 'Times New Roman', Times, serif;
+}
+
+body {
+  background-color: var(--gray-10);
+  color: var(--gray-0);
+}
