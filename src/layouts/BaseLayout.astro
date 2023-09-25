@@ -7,18 +7,20 @@ import NavBar from '@ui/NavBar.astro';
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en' data-theme='dark' class='sr-only'>
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <div>
+  <body>
     <NavBar />
+
     <div>
       <Header />
       <main>
         <slot />
       </main>
     </div>
+
     <Footer />
-  </div>
+  </body>
 </html>

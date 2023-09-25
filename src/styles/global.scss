@@ -1,16 +1,52 @@
 @import './reset.scss';
 @import 'open-props/style';
+@import 'open-props/colors-hsl';
+@import '@phosphor-icons/web/regular';
 
 @font-face {
   font-family: 'Readex-Pro';
   src: url('/fonts/Readex_Pro/ReadexPro-VariableFont_HEXP_wght.ttf');
 }
 
-* {
+:root {
   font-family: 'Readex-Pro', 'Times New Roman', Times, serif;
+  font-size: 18px;
+}
+
+html {
+  --bg: var(--gray-10);
+  --text: var(--gray-0);
+  --bg-hsl: var(--gray-10-hsl);
+  --text-hsl: var(--gray-0-hsl);
+}
+
+[data-theme='light'] {
+  --bg: var(--gray-0);
+  --text: var(--gray-10);
+
+  --bg-hsl: var(--gray-0-hsl);
+  --text-hsl: var(--gray-10-hsl);
 }
 
 body {
-  background-color: var(--gray-10);
-  color: var(--gray-0);
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s ease-in-out, color 0.3s ease-in-out;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
