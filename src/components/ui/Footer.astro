@@ -1,7 +1,46 @@
 ---
-// Footer
+const footerLinks = [
+  {
+    text: 'Home',
+    link: '/',
+  },
+  {
+    text: 'About',
+    link: '/about/',
+  },
+  {
+    text: 'Contact',
+    link: '/contact/',
+  },
+  {
+    text: 'Credits',
+    link: 'https://kentcdodds.com/credits',
+  },
+];
 ---
 
 <footer>
-  <p>Hello Footer</p>
+  <ul>
+    {
+      footerLinks.map((link, index) => {
+        const isExternal = link.link.startsWith('http');
+        return (
+          <li>
+            <a href={link.link}>{link.text} </a>
+            {isExternal && <i class='ph ph-arrow-square-out' />}
+          </li>
+        );
+      })
+    }
+  </ul>
 </footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+  }
+  a {
+    color: var(--text);
+    text-decoration: none;
+  }
+</style>
