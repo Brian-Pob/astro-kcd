@@ -1,16 +1,8 @@
 ---
 import BaseHead from '@/components/meta/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
-import Header from '@ui/Header.astro';
 import Footer from '@ui/Footer.astro';
 import NavBar from '@ui/NavBar.astro';
-
-// NOTE: The html tag has a class of sr-only. This is a workaround to prevent
-// a flash of the wrong theme when the page loads. The class is removed by
-// the client-side JS in src/utils/checkTheme.js. I know this is extremely
-// scuffed, but it's the best I can do for now.
-// sr-only is used instead of display: none because display: none prevents
-// the page from being read by screen readers.
 ---
 
 <!doctype html>
@@ -21,8 +13,7 @@ import NavBar from '@ui/NavBar.astro';
   <body>
     <NavBar transition:animate={'none'} />
 
-    <div transition:name='content'>
-      <Header />
+    <div transition:name='content' transition:animate='slide'>
       <main>
         <slot />
       </main>
