@@ -1,5 +1,6 @@
 ---
 import ThemeSwitcher from './ThemeSwitcher';
+import onNavigate from '@/utils/onNavigate';
 
 const links = [
   { label: 'Portfolio', url: '/portfolio/' },
@@ -43,6 +44,21 @@ const links = [
     & a {
       color: var(--text);
       text-decoration: none;
+      padding: 1rem;
+
+      &::after {
+        content: '';
+        margin-top: 3px;
+        display: block;
+        width: 0;
+        height: 2px;
+        background: var(--text);
+        transition: width 0.2s var(--ease-in-out-2);
+      }
+
+      &:is(:hover, :focus, :focus-visible, .active)::after {
+        width: 100%;
+      }
     }
   }
 
@@ -60,5 +76,40 @@ const links = [
 
   li {
     list-style: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
+
+<script>
+  import onNavigate from '@/utils/onNavigate';
+
+  // Underline the link that matches the current page
+  function setActiveLink() {
+    const links = document.querySelectorAll(
+      'nav a'
+    ) as NodeListOf<HTMLAnchorElement>;
+    const url = window.location.pathname;
+    console.log('url', url);
+
+    // remove second slash and everything after it
+    const urlWithoutTrailingSlash = url.replace(/\/[^\/]*$/, '');
+    console.log('urlWithoutTrailingSlash', urlWithoutTrailingSlash);
+
+    if (urlWithoutTrailingSlash === '') {
+      links[0].classList.add('active');
+      return;
+    }
+
+    links.forEach((link) => {
+      if (link.href.includes(urlWithoutTrailingSlash)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  onNavigate(setActiveLink);
+</script>

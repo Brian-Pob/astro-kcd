@@ -5,7 +5,7 @@ import '@/styles/global.scss';
 import { ViewTransitions } from 'astro:transitions';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '@/consts.ts';
 import ReadexPro from './ReadexPro.astro';
-import checkTheme from '@/utils/checkTheme.js';
+import onNavigate from '@/utils/onNavigate';
 interface OGPropsExtra {
   property: string;
   content: string;
@@ -32,9 +32,27 @@ const {
 
 <!-- Scripts -->
 <script>
-  import checkTheme from '@/utils/checkTheme';
+  import onNavigate from '@/utils/onNavigate';
 
-  checkTheme();
+  const checkTheme = () => {
+    if (typeof window !== 'undefined') {
+      const theme = window.localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        window.localStorage.setItem('theme', 'dark');
+      }
+    }
+  };
+
+  function testThing() {
+    console.log('test');
+  }
+
+  onNavigate(checkTheme, testThing);
 </script>
 
 <!-- Global Metadata -->

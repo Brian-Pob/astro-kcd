@@ -14,14 +14,14 @@ import NavBar from '@ui/NavBar.astro';
 ---
 
 <!doctype html>
-<html lang='en' data-theme='dark' class='sr-only'>
+<html lang='en' data-theme='dark'>
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <NavBar />
+    <NavBar transition:animate={'none'} />
 
-    <div>
+    <div transition:name='content'>
       <Header />
       <main>
         <slot />
