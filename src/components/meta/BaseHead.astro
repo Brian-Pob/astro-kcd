@@ -5,7 +5,7 @@ import '@/styles/global.scss';
 import { ViewTransitions } from 'astro:transitions';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '@/consts.ts';
 import ReadexPro from './ReadexPro.astro';
-
+import checkTheme from '@/utils/checkTheme.js';
 interface OGPropsExtra {
   property: string;
   content: string;
@@ -29,6 +29,13 @@ const {
   extra = [],
 } = Astro.props;
 ---
+
+<!-- Scripts -->
+<script>
+  import checkTheme from '@/utils/checkTheme';
+
+  checkTheme();
+</script>
 
 <!-- Global Metadata -->
 <meta charset='utf-8' />
