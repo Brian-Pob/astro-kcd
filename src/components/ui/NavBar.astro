@@ -1,6 +1,7 @@
 ---
 import ThemeSwitcher from './ThemeSwitcher';
 import onNavigate from '@/utils/onNavigate';
+import NavDropdown from './NavDropdown';
 
 const links = [
   { label: 'Portfolio', url: '/portfolio/' },
@@ -24,6 +25,9 @@ const links = [
     }
   </ul>
   <div>
+    <div class='nav-dropdown'>
+      <NavDropdown client:visible />
+    </div>
     <ThemeSwitcher client:load />
   </div>
 </nav>
@@ -39,7 +43,8 @@ const links = [
     justify-content: space-between;
     align-items: center;
 
-    padding: 5vw 3rem;
+    padding-block: 3rem;
+    padding-inline: 5vw;
 
     & a {
       color: var(--text);
@@ -60,10 +65,17 @@ const links = [
         width: 100%;
       }
     }
+
+    & :last-child {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
   }
 
   .site-title {
-    font-size: 1.5rem;
+    font-size: 1.333rem;
+    font-weight: 700;
   }
 
   ul {
@@ -71,12 +83,34 @@ const links = [
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   li {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .nav-dropdown {
+    border-radius: 50%;
+    border: 1px solid hsl(var(--text-hsl) / 80%);
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 1.7rem;
+    overflow: hidden;
+    display: none;
+
+    &:is(:hover, :focus, :focus-visible) {
+      border-color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 </style>
 
@@ -111,3 +145,4 @@ const links = [
 
   onNavigate(setActiveLink);
 </script>
+ ./NavDropdown/NavDropdown
