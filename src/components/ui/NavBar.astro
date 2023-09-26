@@ -4,10 +4,10 @@ import onNavigate from '@/utils/onNavigate';
 import NavDropdown from './NavDropdown';
 
 const links = [
-  { label: 'Portfolio', url: '/portfolio/' },
-  { label: 'Blog', url: '/blog/' },
-  { label: 'About', url: '/about/' },
-  { label: 'Contact', url: '/contact/' },
+  { text: 'Portfolio', href: '/portfolio/' },
+  { text: 'Blog', href: '/blog/' },
+  { text: 'About', href: '/about/' },
+  { text: 'Contact', href: '/contact/' },
 ];
 ---
 
@@ -18,7 +18,7 @@ const links = [
       links.map((link) => {
         return (
           <li>
-            <a href={link.url}>{link.label}</a>
+            <a href={link.href}>{link.text}</a>
           </li>
         );
       })
@@ -26,7 +26,7 @@ const links = [
   </ul>
   <div>
     <div class='nav-dropdown'>
-      <NavDropdown client:visible />
+      <NavDropdown client:visible links={links} />
     </div>
     <ThemeSwitcher client:load />
   </div>
@@ -66,7 +66,7 @@ const links = [
       }
     }
 
-    & :last-child {
+    & > :last-child {
       display: flex;
       flex-direction: row;
       gap: 1rem;
@@ -93,24 +93,6 @@ const links = [
     display: inline-flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .nav-dropdown {
-    border-radius: 50%;
-    border: 1px solid hsl(var(--text-hsl) / 80%);
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 1.7rem;
-    overflow: hidden;
-    display: none;
-
-    &:is(:hover, :focus, :focus-visible) {
-      border-color: var(--text);
-    }
-
-    @media (max-width: 768px) {
-      display: block;
-    }
   }
 </style>
 
@@ -145,4 +127,3 @@ const links = [
 
   onNavigate(setActiveLink);
 </script>
- ./NavDropdown/NavDropdown
