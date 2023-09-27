@@ -6,6 +6,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astrokcd.vercel.app/',
+  site: 'https://astro-kcd.vercel.app/',
   integrations: [solidJs(), mdx(), sitemap()],
 });
