@@ -23,6 +23,7 @@
     cursor: pointer;
   }
 }
+
 .dropdown-menu__trigger-icon {
   transform: rotate(0deg);
   transition: transform 350ms ease-in-out;
@@ -33,5 +34,68 @@
 
   &[data-expanded] {
     transform: rotate(180deg);
+  }
+}
+
+.dropdown-menu__content {
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: hsl(var(--bg-hsl) / 60%); //add blur
+  backdrop-filter: blur(10px);
+
+  animation: contentHide 250ms ease-in forwards;
+
+  &[data-expanded] {
+    animation: contentShow 250ms ease-in forwards;
+  }
+}
+
+:has(> .dropdown-menu__content) {
+  // Bandaid fix for dropdown menu not being centered
+  transform: translate3d(0px, 112px, 0px) !important;
+}
+
+.dropdown-menu__item {
+  text-align: center;
+  > a {
+    display: inline-block;
+    padding: 2rem 0;
+    width: 100%;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 1px;
+    background: var(--text);
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes contentHide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
   }
 }

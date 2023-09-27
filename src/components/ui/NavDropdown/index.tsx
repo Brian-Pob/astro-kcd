@@ -15,10 +15,10 @@ function NavDropdown(props: any) {
           </DropdownMenu.Icon>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
-          <DropdownMenu.Content class='dropdown-menu__content'>
+          <DropdownMenu.Content class={s['dropdown-menu__content']}>
             {links.map((link: any) => (
               <DropdownMenu.Item
-                class='dropdown-menu__item'
+                class={s['dropdown-menu__item']}
                 closeOnSelect={false}
               >
                 <Link.Root href={link.href}>{link.text}</Link.Root>

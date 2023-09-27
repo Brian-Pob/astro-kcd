@@ -62,3 +62,22 @@ ul {
 li {
   list-style: none;
 }
+
+a {
+  color: var(--text);
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    margin-top: 3px;
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--text);
+    transition: width 0.2s var(--ease-in-out-2);
+  }
+
+  &:is(:hover, :focus, :focus-visible, .active)::after {
+    width: 100%;
+  }
+}
