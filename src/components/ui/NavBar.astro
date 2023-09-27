@@ -11,13 +11,15 @@ const links = [
 ---
 
 <nav>
-  <a class='site-title' href='/'>Astro KCD</a>
+  <a class='site-title underlined' href='/'>Astro KCD</a>
   <ul>
     {
       links.map((link) => {
         return (
           <li>
-            <a href={link.href}>{link.text}</a>
+            <a class='underlined' href={link.href}>
+              {link.text}
+            </a>
           </li>
         );
       })
